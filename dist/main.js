@@ -1,0 +1,1 @@
+(()=>{"use strict";("work",()=>{console.log("deleted work")})()})();

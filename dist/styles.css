@@ -1,0 +1,404 @@
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+body {
+    background: linear-gradient(to right, #ffefba, #ffffff);
+}
+/*TOP CONTAINER AND BOTTOM LEFT*/
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 550px;
+    margin: 30px auto;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+#topContainer {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 100px;
+}
+
+#topLeftContainer {
+    width: 300px;
+    height: 100px;;
+    background-color: rgb(35, 35, 252);
+    border-radius: 50px 0 0 0;
+}
+
+#title {
+    margin-left: 75px;
+    margin-top: 25px;
+}
+
+#topRightContainer {
+    width: 700px;
+    height: 100px;
+    background-color: rgb(52, 52, 252);
+    border-radius: 0 15px 0 0;
+}
+
+#categoryHeading {
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
+#bottomContainer {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    height: 450px;
+}
+
+#bottomLeftContainer {
+    width: 300px;
+    height: 450px;
+    background-color: green;
+    border-radius: 0 0 0 15px;
+    overflow: auto;
+}
+
+#addCategoryButton {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.newCategory {
+    height: 48px;
+    padding-left: 40px;
+    background-color: green;
+    padding-top: 20px;
+    cursor: pointer;
+}
+.newCategory:hover {
+    height: 48px;
+    padding-left: 40px;
+    background-color: rgb(0, 182, 0);
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.deleteCategoryIcon {
+    float: right;
+    margin-top: 7px;
+    margin-right: 15px;
+    color: rgb(12, 73, 0);
+    
+}
+
+.activeCategory {
+    height: 48px;
+    background-color: rgb(0, 182, 0);
+    border-radius: 50px 0 0 50px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*TASK DISPLAY / BOTTOM RIGHT CONTAINER*/
+#bottomRightContainer {
+    width: 700px;
+    height: 450px;
+    background-color: rgb(0, 182, 0);
+    border-radius: 0 0 50px 0;
+    overflow: auto;
+}
+
+#taskInputField {
+    margin-left: 30px;
+    margin-top: 15px;
+    width: 600px;
+    height: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#taskInputAndButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#addTaskButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px 15px 0 15px;
+    height: 30px;
+}
+
+#orderingButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px 15px 0 15px;
+}
+
+.tasksDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    height: 120px;
+    width: 600px;
+    background-color: rgb(1, 124, 1);
+}
+
+.completedTasksDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    height: 120px;
+    width: 600px;
+    opacity: 0.6;
+    background-color: rgb(1, 124, 1);
+}
+
+.highPriorityIndicator {
+    height: 100px;
+    width: 15px;
+    margin-left: 15px;
+    background-color: rgb(255, 55, 20)
+}
+
+.mediumPriorityIndicator {
+    height: 100px;
+    width: 15px;
+    margin-left: 15px;
+    background-color: rgb(250, 253, 60)
+}
+
+.lowPriorityIndicator {
+    height: 100px;
+    width: 15px;
+    margin-left: 15px;
+    background-color: rgb(30, 209, 209)
+}
+
+.taskInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 555px;
+    height: 100px;
+}
+
+.taskNameAndDueDateContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 90px;
+    background-color: rgb(129, 182, 50)
+}
+
+.taskName {
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 60px;
+    width: 200px;
+    overflow: auto;
+}
+
+.dueDate {
+    padding-left: 10px;
+    height: 30px;
+    width: 200px;
+}
+
+.notesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
+    width: 280px;
+    background-color: rgb(0, 112, 187);
+}   
+
+.notesHeading {
+    height: 30px;
+    width: 280px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.notesContent {
+    height: 70px;
+    width: 270px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    overflow: auto;
+}
+
+.deleteEditAndCheckContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    width: 20px;
+    padding-right: 20px;
+    padding-left: 5px;
+}
+
+.deleteTaskIcon {
+    float: right;
+    color: rgb(216, 240, 2);
+    cursor: pointer;
+}
+
+.editTaskIcon {
+    color: rgb(216, 240, 2);
+    margin-left: 4px;
+}
+
+.checkboxComplete {
+    color:rgb(216, 240, 2);
+    cursor: pointer;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*CATEGORY INPUT FORM*/
+.categoryInputTable {
+    display: none;
+}
+
+.categoryInputTableActive {
+    position: absolute;
+    /* flex-direction: column;
+    justify-content: space-evenly; */
+    width: 800px;
+    left: 200px;
+    top: 200px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    background-color:#395dff;
+    border: 10px solid rgb(0, 49, 156);
+    padding: 14px;
+    animation: fadeIn 0.4s linear 1 forwards;
+    z-index: +1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.1)}
+    100% { opacity: 1; transform: scale(1)}
+}
+
+#categoryInputField{
+    font-family: 'Poppins', sans-serif;
+    height: 30px;
+    width: 400px;
+    resize: none;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*TASK DETAILS INPUT FORM*/
+#inputTableContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 400px;
+    top: 100px;
+    left: 240px;
+    z-index: -1;
+}
+
+#inputTableContainerActive {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 300px;
+    top: 100px;
+    left: 240px;
+}
+
+.inputTable {
+    display: none;
+}
+
+.inputTableActive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 800px;
+    left: auto;
+    right: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    background-color:#395dff;
+    border: 10px solid rgb(0, 49, 156);
+    padding: 14px;
+    animation: fadeIn 0.4s linear 1 forwards;
+    z-index: +1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.1)}
+    100% { opacity: 1; transform: scale(1)}
+}
+
+#taskTitleForm {
+    height: 50px;
+}
+
+#dueDateContainer {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#priority {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#prioritySelectorsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#formButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+#mainFormInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+}
