@@ -1,20 +1,17 @@
 let categoryCollection = [];
-let counter = 0
-
-
 function Category(name, tasks){
     
-    const addName = () => {
+    const saveCategory = () => {
         let categoryInputTable = document.querySelector('.categoryInputTableActive')
         categoryCollection.push(name)
-        console.log(categoryCollection)
         categoryInputTable.classList.remove('categoryInputTableActive')
         categoryInputTable.classList.add('categoryInputTable')
     }
 
     const displayCategory = () => {
+        let counter = 0
+        bottomLeftCategoryContainer.textContent = ''
         categoryCollection.forEach(category => {
-            bottomLeftCategoryContainer.textContent = ''
             let newCategoryContainer = document.createElement('p')
             newCategoryContainer.classList.add('newCategory')
             newCategoryContainer.textContent = category
@@ -28,8 +25,9 @@ function Category(name, tasks){
             newCategoryContainer.appendChild(deleteCategoryIcon)
             counter ++
         })
+        
     }
-    return{name, tasks, addName, displayCategory}
+    return{name, tasks, saveCategory, displayCategory}
 }
 
 export {Category}

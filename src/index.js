@@ -2,6 +2,7 @@ import {Category} from './category.js'
 
 const displayCategoryInput = document.getElementById('addCategoryButton')
 const submitCategory = document.getElementById('submitCategory')
+const categoryInputField = document.getElementById('categoryInputField')
 let categoryInputTable = document.querySelector('.categoryInputTable')
 
 
@@ -11,8 +12,9 @@ displayCategoryInput.addEventListener('click', () => {
 })
 
 submitCategory.addEventListener('click', function(){
-    const categoryName = document.getElementById('categoryInputField').value
-    const newCategory = Category(categoryName, 0)
-    newCategory.addName()
+    const categoryName = categoryInputField.value
+    const newCategory = Category(categoryName, [])
+    newCategory.saveCategory()
     newCategory.displayCategory()
+    categoryInputField.value = ''
 })
