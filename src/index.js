@@ -13,8 +13,15 @@ displayCategoryInput.addEventListener('click', () => {
 
 submitCategory.addEventListener('click', function(){
     const categoryName = categoryInputField.value
-    const newCategory = Category(categoryName, [])
+    const newCategory = Category(categoryName, ['example task'])
     newCategory.saveCategory()
-    newCategory.displayCategory()
+    newCategory.renderCategories()
     categoryInputField.value = ''
+})
+
+let categories = Array.from(document.getElementsByClassName('newCategory'))
+categories.forEach(category => {
+    //category.addEventListener('click', displayCategoryHeading)
+    //category.addEventListener('click', makeAllCategoriesInactive)
+    category.addEventListener('click', Category.setActiveCategory)
 })
