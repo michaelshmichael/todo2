@@ -6,7 +6,7 @@ if (localStorage.getItem('collection')) {
 } else {
     collection = []
 }
-const constructor = {
+const Categories = {
 
     categoryConstructor: function (name) {
         this.name = name;
@@ -31,6 +31,22 @@ const constructor = {
         collection.splice(category, 1)
         localStorage.setItem('collection', JSON.stringify(collection));
         renderCategories()
+    },
+
+    setActiveCategory: function (activeCategory, selectedCategoryNumber) {
+        collection.forEach(category => {
+            if(category.active){category.active = false}
+            localStorage.setItem('collection', JSON.stringify(collection))
+        })
+        let displayedCategories = Array.from(document.getElementsByClassName('newCategory'));
+        displayedCategories.forEach(category => {
+            category.classList.remove('activeCategory')
+        })
+        activeCategory.classList.add('activeCategory')
+        collection[selectedCategoryNumber].active = true
+        localStorage.setItem('collection', JSON.stringify(collection));
+        console.table(collection)
+        //renderTasks()
     }
 
     // addToDoToCategory: function (category, toDo) {
@@ -39,4 +55,4 @@ const constructor = {
 }
 
 
-  export {constructor}
+  export {Categories}

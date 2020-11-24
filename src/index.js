@@ -1,4 +1,4 @@
-import {constructor} from './constructor.js'
+import {Categories} from './constructor.js'
 
 const displayCategoryInput = document.getElementById('addCategoryButton')
 const categoryInputField = document.getElementById('categoryInputField')
@@ -13,8 +13,8 @@ const addListenersToAddCategory = () => {
 
     submitCategory.addEventListener('click', () => {
         let newCategoryName = categoryInputField.value
-        let newCategory = new constructor.categoryConstructor(newCategoryName)
-        constructor.addCategoryToArray(newCategory)
+        let newCategory = new Categories.categoryConstructor(newCategoryName)
+        Categories.addCategoryToArray(newCategory)
         categoryInputTable.classList.remove('categoryInputTableActive')
         categoryInputTable.classList.add('categoryInputTable')
         categoryInputField.value = ''
@@ -28,9 +28,20 @@ const addListenersForDeletingCategories = () => {
     deleteCategoryIcons.forEach(button => {
             button.addEventListener('click', function(e){
                 let index = e.target.dataset.index
-                constructor.removeCategoryFromArray(index)
+                Categories.removeCategoryFromArray(index)
             })
     })
+}
+
+const addListenersForActiveCategory = () => {
+    let displayedCategories = Array.from(document.getElementsByClassName('newCategory'));
+        displayedCategories.forEach(category => {
+            category.addEventListener('click', function(e){
+                let selectedCategoryNumber = e.target.id
+                let activeCategory = displayedCategories[selectedCategoryNumber]
+                Categories.setActiveCategory(activeCategory, selectedCategoryNumber)
+            })
+        })
 }
 
 const renderCategories = () => {
@@ -53,8 +64,11 @@ const renderCategories = () => {
         counter ++
     })}
     addListenersForDeletingCategories()
+    addListenersForActiveCategory()
 }
 renderCategories()
+
+
 
 export {renderCategories}
 
