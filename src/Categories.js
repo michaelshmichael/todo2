@@ -1,5 +1,4 @@
-import {addListenersForActiveCategory} from './index.js'
-import {addListenersForDeletingCategories} from './index.js'
+import {editCategoryListeners} from './index.js'
 
 let collection
 if (localStorage.getItem('collection')) {
@@ -12,7 +11,7 @@ const Categories = {
     categoryConstructor: function (name) {
         this.name = name;
         this.active = false;
-        this.toDos = [];
+        this.tasks = [];
     },
 
     addCategoryToArray: function (category) {
@@ -23,7 +22,7 @@ const Categories = {
     removeCategoryFromArray: function(category) {
         collection.splice(category, 1)
         localStorage.setItem('collection', JSON.stringify(collection));
-        renderCategories()
+        Categories.renderCategories()
     },
 
     setActiveCategory: function (activeCategory, selectedCategoryNumber) {
@@ -60,8 +59,7 @@ const Categories = {
             newCategoryContainer.appendChild(deleteCategoryIcon)
             counter ++
         })}
-        addListenersForDeletingCategories()
-        addListenersForActiveCategory()
+        editCategoryListeners()
     }
 }
 

@@ -5,7 +5,8 @@ const categoryInputField = document.getElementById('categoryInputField')
 const submitCategory = document.getElementById('submitCategory')
 let categoryInputTable = document.querySelector('.categoryInputTable')
 
-const addListenersToAddCategory = () => {
+const submitCategoryListeners = () => {
+
     displayCategoryInput.addEventListener('click', () => {
         categoryInputTable.classList.remove('categoryInputTable')
         categoryInputTable.classList.add('categoryInputTableActive')
@@ -21,9 +22,10 @@ const addListenersToAddCategory = () => {
         Categories.renderCategories()
     })
 }
-addListenersToAddCategory()
+submitCategoryListeners()
 
-const addListenersForDeletingCategories = () => {
+const editCategoryListeners = () => {
+    
     let deleteCategoryIcons = Array.from(document.getElementsByClassName('deleteCategoryIcon'))
     deleteCategoryIcons.forEach(button => {
             button.addEventListener('click', function(e){
@@ -31,9 +33,7 @@ const addListenersForDeletingCategories = () => {
                 Categories.removeCategoryFromArray(index)
             })
     })
-}
 
-const addListenersForActiveCategory = () => {
     let displayedCategories = Array.from(document.getElementsByClassName('newCategory'));
         displayedCategories.forEach(category => {
             category.addEventListener('click', function(e){
@@ -41,12 +41,12 @@ const addListenersForActiveCategory = () => {
                 let activeCategory = displayedCategories[selectedCategoryNumber]
                 Categories.setActiveCategory(activeCategory, selectedCategoryNumber)
             })
-        })
+    })
 }
 
 Categories.renderCategories()
 
-export {addListenersForDeletingCategories, addListenersForActiveCategory}
+export {submitCategoryListeners, editCategoryListeners}
 
 
 
