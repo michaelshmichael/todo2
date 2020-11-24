@@ -1,4 +1,4 @@
- 
+
 const Tasks = {
     taskConstructor: function (name, comment, priority) {
         this.name = name;

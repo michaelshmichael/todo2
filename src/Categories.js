@@ -8,6 +8,7 @@ if (localStorage.getItem('collection')) {
 }
 
 const Categories = {
+    
     categoryConstructor: function (name) {
         this.name = name;
         this.active = false;
