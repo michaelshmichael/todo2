@@ -1,4 +1,4 @@
-import {Categories} from './constructor.js'
+import {Categories} from './Categories.js'
 
 const displayCategoryInput = document.getElementById('addCategoryButton')
 const categoryInputField = document.getElementById('categoryInputField')
@@ -18,7 +18,7 @@ const addListenersToAddCategory = () => {
         categoryInputTable.classList.remove('categoryInputTableActive')
         categoryInputTable.classList.add('categoryInputTable')
         categoryInputField.value = ''
-        renderCategories()
+        Categories.renderCategories()
     })
 }
 addListenersToAddCategory()
@@ -44,33 +44,9 @@ const addListenersForActiveCategory = () => {
         })
 }
 
-const renderCategories = () => {
-    let collection = JSON.parse(localStorage.getItem('collection'))
-    let counter = 0
-    bottomLeftCategoryContainer.textContent = ''
-    if(collection){
-    collection.forEach(category => {
-        let newCategoryContainer = document.createElement('p')
-        newCategoryContainer.classList.add('newCategory')
-        newCategoryContainer.textContent = category.name
-        bottomLeftCategoryContainer.appendChild(newCategoryContainer)
-        newCategoryContainer.setAttribute('id', `${counter}`)
-        newCategoryContainer.setAttribute('data-index', `${counter}`)
+Categories.renderCategories()
 
-        let deleteCategoryIcon = document.createElement('i')
-        deleteCategoryIcon.setAttribute('class', 'fa fa-trash deleteCategoryIcon')
-        deleteCategoryIcon.setAttribute('data-index', `${counter}`)
-        newCategoryContainer.appendChild(deleteCategoryIcon)
-        counter ++
-    })}
-    addListenersForDeletingCategories()
-    addListenersForActiveCategory()
-}
-renderCategories()
-
-
-
-export {renderCategories}
+export {addListenersForDeletingCategories, addListenersForActiveCategory}
 
 
 
