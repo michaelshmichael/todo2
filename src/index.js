@@ -1,11 +1,10 @@
 import {Categories} from './Categories.js'
 
-const displayCategoryInput = document.getElementById('addCategoryButton')
-const categoryInputField = document.getElementById('categoryInputField')
-const submitCategory = document.getElementById('submitCategory')
-let categoryInputTable = document.querySelector('.categoryInputTable')
-
 const submitCategoryListeners = () => {
+    const displayCategoryInput = document.getElementById('addCategoryButton')
+    const categoryInputField = document.getElementById('categoryInputField')
+    const submitCategory = document.getElementById('submitCategory')
+    let categoryInputTable = document.querySelector('.categoryInputTable')
 
     displayCategoryInput.addEventListener('click', () => {
         categoryInputTable.classList.remove('categoryInputTable')
@@ -25,7 +24,7 @@ const submitCategoryListeners = () => {
 submitCategoryListeners()
 
 const editCategoryListeners = () => {
-    
+
     let deleteCategoryIcons = Array.from(document.getElementsByClassName('deleteCategoryIcon'))
     deleteCategoryIcons.forEach(button => {
             button.addEventListener('click', function(e){
@@ -43,6 +42,29 @@ const editCategoryListeners = () => {
             })
     })
 }
+
+const submitTaskListeners = () => {
+    const addTaskButton = document.getElementById('addTaskButton')
+    const inputTableContainer = document.getElementById('inputTableContainer')
+    const inputTable = document.querySelector('.inputTable')
+
+    addTaskButton.addEventListener('click', () => {
+        inputTableContainer.setAttribute('id', 'inputTableContainerActive')
+        inputTable.classList.add('inputTableActive')
+        inputTable.classList.remove('inputTable')
+    })
+
+    submitButton.addEventListener('click', () => {
+        console.log('clickedBZ')
+    })
+
+    cancelButton.addEventListener('click', () => {
+        inputTableContainer.setAttribute('id', 'inputTableContainer')
+        inputTable.classList.add('inputTable')
+        inputTable.classList.remove('inputTableActive')
+    })
+}
+submitTaskListeners()
 
 Categories.renderCategories()
 
