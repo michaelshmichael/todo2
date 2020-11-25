@@ -1,4 +1,5 @@
 import {editCategoryListeners} from './index.js'
+import {Tasks} from './Tasks.js'
 
 
 
@@ -42,7 +43,7 @@ const Categories = {
         collection[selectedCategoryNumber].active = true
         localStorage.setItem('collection', JSON.stringify(collection));
         console.table(collection)
-        //renderTasks()
+        Tasks.renderTasks()
     },
 
     renderCategories: function () {
