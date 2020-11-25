@@ -1,5 +1,7 @@
+import {editTaskListeners} from './index.js'
 import {formatDistance} from 'date-fns'
 import parseISO from 'date-fns/parseISO'
+
 
 const Tasks = {
     taskConstructor: function (name, dueDate, priority, notes) {
@@ -31,6 +33,17 @@ const Tasks = {
         
         localStorage.setItem('collection', JSON.stringify(collection));
         Tasks.renderTasks()
+    },
+
+    deleteTask: function(e) {
+    let collection = JSON.parse(localStorage.getItem('collection'))
+    let activeCategory = collection.find(element => element.active === true);
+    if (confirm("Delete Task?")) { 
+        let index = e.target.dataset.index
+        activeCategory.tasks.splice(index, 1)
+        localStorage.setItem('collection', JSON.stringify(collection));
+        Tasks.renderTasks()
+        }
     },
 
     renderTasks: function() {
@@ -115,7 +128,7 @@ const Tasks = {
             counter++
             })
         counter = 0
-        //addTaskListeners()
+        editTaskListeners()
     }
 }
 

@@ -22,7 +22,7 @@ const submitCategoryListeners = () => {
         Categories.renderCategories()
     })
 }
-submitCategoryListeners()
+
 
 const editCategoryListeners = () => {
 
@@ -48,7 +48,7 @@ const submitTaskListeners = () => {
     const addTaskButton = document.getElementById('addTaskButton')
     const inputTableContainer = document.getElementById('inputTableContainer')
     const inputTable = document.querySelector('.inputTable')
-
+    
     addTaskButton.addEventListener('click', () => {
         inputTableContainer.setAttribute('id', 'inputTableContainerActive')
         inputTable.classList.add('inputTableActive')
@@ -66,12 +66,26 @@ const submitTaskListeners = () => {
         inputTable.classList.add('inputTable')
         inputTable.classList.remove('inputTableActive')
     })
+
+   
 }
-submitTaskListeners()
+
+const editTaskListeners = () => {
+    let deleteTaskButtons = Array.from(document.getElementsByClassName('deleteTaskIcon'))
+    
+    deleteTaskButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+        Tasks.deleteTask(e)
+        })
+    })
+}
+
 
 Categories.renderCategories()
+submitCategoryListeners()
+submitTaskListeners()
 
-export {submitCategoryListeners, editCategoryListeners}
+export {submitCategoryListeners, editCategoryListeners, editTaskListeners}
 
 
 
