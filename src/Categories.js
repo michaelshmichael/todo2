@@ -1,14 +1,9 @@
 import {editCategoryListeners} from './index.js'
 
-let collection
-if (localStorage.getItem('collection')) {
-    collection = JSON.parse(localStorage.getItem('collection'))
-} else {
-    collection = []
-}
+
 
 const Categories = {
-    
+
     categoryConstructor: function (name) {
         this.name = name;
         this.active = false;
@@ -16,17 +11,25 @@ const Categories = {
     },
 
     addCategoryToArray: function (category) {
+        let collection
+        if (localStorage.getItem('collection')) {
+            collection = JSON.parse(localStorage.getItem('collection'))
+        } else {
+            collection = []
+        }
         collection.push(category);
         localStorage.setItem('collection', JSON.stringify(collection));
     },
 
     removeCategoryFromArray: function(category) {
+        let collection = JSON.parse(localStorage.getItem('collection'))
         collection.splice(category, 1)
         localStorage.setItem('collection', JSON.stringify(collection));
         Categories.renderCategories()
     },
 
     setActiveCategory: function (activeCategory, selectedCategoryNumber) {
+        let collection = JSON.parse(localStorage.getItem('collection'))
         collection.forEach(category => {
             if(category.active){category.active = false}
             localStorage.setItem('collection', JSON.stringify(collection))
@@ -43,6 +46,7 @@ const Categories = {
     },
 
     renderCategories: function () {
+        let collection = JSON.parse(localStorage.getItem('collection'))
         let counter = 0
         bottomLeftCategoryContainer.textContent = ''
         if(collection){

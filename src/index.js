@@ -1,4 +1,5 @@
 import {Categories} from './Categories.js'
+import {Tasks} from './Tasks.js'
 
 const submitCategoryListeners = () => {
     const displayCategoryInput = document.getElementById('addCategoryButton')
@@ -55,7 +56,9 @@ const submitTaskListeners = () => {
     })
 
     submitButton.addEventListener('click', () => {
-        console.log('clickedBZ')
+        inputTable.classList.toggle('inputTableActive')
+        inputTableContainer.setAttribute('id', 'inputTableContainer')
+        Tasks.addTaskToCategory()
     })
 
     cancelButton.addEventListener('click', () => {
