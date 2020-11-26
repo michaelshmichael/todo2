@@ -39,6 +39,7 @@ const editCategoryListeners = () => {
                 let selectedCategoryNumber = e.target.id
                 let activeCategory = displayedCategories[selectedCategoryNumber]
                 Categories.setActiveCategory(activeCategory, selectedCategoryNumber)
+                Categories.displayCategoryHeading(selectedCategoryNumber)
             })
     })
 }
