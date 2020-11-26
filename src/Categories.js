@@ -1,8 +1,6 @@
 import {editCategoryListeners} from './index.js'
 import {Tasks} from './Tasks.js'
 
-
-
 const Categories = {
 
     categoryConstructor: function (name) {

@@ -1,9 +1,10 @@
 import {editTaskListeners} from './index.js'
+import {orderingTaskListeners} from './index.js'
 import {formatDistance} from 'date-fns'
 import parseISO from 'date-fns/parseISO'
 
-
 const Tasks = {
+    
     taskConstructor: function (name, dueDate, priority, notes) {
         this.name = name;
         this.dueDate = dueDate;
@@ -129,6 +130,39 @@ const Tasks = {
             })
         counter = 0
         editTaskListeners()
+        orderingTaskListeners()
+    },
+
+    setTaskAsComplete: function(e) {
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let checkboxNumber = e.target.dataset.index
+        let activeCategory = collection.find(element => element.active);
+        let completedTask = activeCategory.tasks[checkboxNumber]
+        completedTask.status ? completedTask.status = false : completedTask.status = true
+        localStorage.setItem('collection', JSON.stringify(collection)); 
+        Tasks.renderTasks()  
+    },
+    
+    orderTasksByDate: function() {
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let activeCategory = collection.find(element => element.active);
+        let activeCategoryTasks = activeCategory.tasks
+        activeCategoryTasks.sort(function(a,b){
+            return a.dueDate > b.dueDate ? 1 : a.dueDate < b.dueDate ? -1 : 0;
+        })
+        localStorage.setItem('collection', JSON.stringify(collection));
+        Tasks.renderTasks()
+    },
+
+    orderTasksByImportance: function() {
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let activeCategory = collection.find(element => element.active);
+        let activeCategoryTasks = activeCategory.tasks
+        activeCategoryTasks.sort(function(a,b){ 
+            return a.priority > b.priority ? 1 : a.priority < b.priority ? -1 : 0;
+        })
+        localStorage.setItem('collection', JSON.stringify(collection)); 
+        Tasks.renderTasks()  
     }
 }
 

@@ -23,7 +23,6 @@ const submitCategoryListeners = () => {
     })
 }
 
-
 const editCategoryListeners = () => {
 
     let deleteCategoryIcons = Array.from(document.getElementsByClassName('deleteCategoryIcon'))
@@ -72,20 +71,38 @@ const submitTaskListeners = () => {
 
 const editTaskListeners = () => {
     let deleteTaskButtons = Array.from(document.getElementsByClassName('deleteTaskIcon'))
-    
     deleteTaskButtons.forEach(button => {
         button.addEventListener('click', (e) => {
         Tasks.deleteTask(e)
         })
     })
+
+    let completedTaskButtons = Array.from(document.getElementsByClassName('checkboxComplete'));
+    completedTaskButtons.forEach(button => {
+        button.addEventListener('click', function(e){
+            Tasks.setTaskAsComplete(e)
+        })
+    })
 }
 
+const orderingTaskListeners = () => {
+    const orderTaskByImportanceButton = document.getElementById('importanceButton')
+    const orderTaskByDateButton = document.getElementById('dateButton')
+
+    orderTaskByImportanceButton.addEventListener('click', function(){
+        Tasks.orderTasksByImportance()
+    })
+    orderTaskByDateButton.addEventListener('click', function(){
+        Tasks.orderTasksByDate()
+    })
+   
+}
 
 Categories.renderCategories()
 submitCategoryListeners()
 submitTaskListeners()
 
-export {submitCategoryListeners, editCategoryListeners, editTaskListeners}
+export {editCategoryListeners, editTaskListeners, orderingTaskListeners}
 
 
 
