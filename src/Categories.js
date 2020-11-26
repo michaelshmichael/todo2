@@ -28,11 +28,8 @@ const Categories = {
     },
 
     setActiveCategory: function (activeCategory, selectedCategoryNumber) {
+        Categories.makeAllCategoriesInactive()
         let collection = JSON.parse(localStorage.getItem('collection'))
-        collection.forEach(category => {
-            if(category.active){category.active = false}
-            localStorage.setItem('collection', JSON.stringify(collection))
-        })
         let displayedCategories = Array.from(document.getElementsByClassName('newCategory'));
         displayedCategories.forEach(category => {
             category.classList.remove('activeCategory')
@@ -42,6 +39,14 @@ const Categories = {
         localStorage.setItem('collection', JSON.stringify(collection));
         console.table(collection)
         Tasks.renderTasks()
+    },
+
+    makeAllCategoriesInactive: function(){
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        collection.forEach(category => {
+            if(category.active){category.active = false}
+            localStorage.setItem('collection', JSON.stringify(collection))
+        })
     },
 
     displayCategoryHeading: function(selectedCategoryNumber) {

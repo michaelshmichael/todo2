@@ -49,21 +49,30 @@ const submitTaskListeners = () => {
     const inputTableContainer = document.getElementById('inputTableContainer')
     const inputTable = document.querySelector('.inputTable')
     const taskFormTitle = document.getElementById('taskTitleForm')
-    
+    let taskInputField = document.getElementById('taskInputField')
     
     addTaskButton.addEventListener('click', () => {
+        let collection = JSON.parse(localStorage.getItem('collection'))
         let nameValue = document.getElementById('taskInputField').value
-        inputTableContainer.setAttribute('id', 'inputTableContainerActive')
-        inputTable.classList.add('inputTableActive')
-        inputTable.classList.remove('inputTable')
-        taskFormTitle.innerHTML = `Enter details for ${nameValue}`
+        let activeCategory = collection.find(category => category.active);
+        if (activeCategory == undefined){
+            alert('Please Select a Category')
+        } else if(!nameValue){
+            alert('Please Enter a Value')
+        } else if(nameValue){
+            inputTableContainer.setAttribute('id', 'inputTableContainerActive')
+            inputTable.classList.add('inputTableActive')
+            inputTable.classList.remove('inputTable')
+            taskFormTitle.innerHTML = `Enter details for ${nameValue}`
+        }
     })
 
     submitButton.addEventListener('click', () => {
-        let nameValue = document.getElementById('taskInputField').value
+        let nameValue = taskInputField.value
         inputTable.classList.toggle('inputTableActive')
         inputTableContainer.setAttribute('id', 'inputTableContainer')
         Tasks.addTaskToCategory(nameValue)
+        taskInputField.value = ''
     })
 
     cancelButton.addEventListener('click', () => {
@@ -110,6 +119,7 @@ const orderingTaskListeners = () => {
 }
 
 Categories.renderCategories()
+Categories.makeAllCategoriesInactive()
 orderingTaskListeners()
 submitCategoryListeners()
 submitTaskListeners()
