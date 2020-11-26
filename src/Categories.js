@@ -46,10 +46,8 @@ const Categories = {
 
     displayCategoryHeading: function(selectedCategoryNumber) {
         let collection = JSON.parse(localStorage.getItem('collection'))
-        let topRightContainer = document.getElementById('topRightContainer')
         topRightContainer.textContent = '';
         let selectedCategory = collection[selectedCategoryNumber]
-        console.log(selectedCategory.name)
         let categoryDisplay = document.createElement('h1')
         categoryDisplay.textContent = selectedCategory.name
         categoryDisplay.setAttribute('id', 'categoryHeading')

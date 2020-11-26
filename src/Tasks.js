@@ -1,5 +1,4 @@
 import {editTaskListeners} from './index.js'
-import {orderingTaskListeners} from './index.js'
 import {formatDistance} from 'date-fns'
 import parseISO from 'date-fns/parseISO'
 
@@ -13,10 +12,9 @@ const Tasks = {
         this.status = false;
     },
  
-    addTaskToCategory: function () {
+    addTaskToCategory: function (nameValue) {
         let collection = JSON.parse(localStorage.getItem('collection'))
-        let activeCategory = collection.find(category => category.active);
-        let nameValue = document.getElementById('taskInputField').value
+        let activeCategory = collection.find(category => category.active)
         let dueDateValue = document.getElementById('dueDate').value
         let priorityValue
         if (document.getElementById('highPriority').checked) {
@@ -76,7 +74,7 @@ const Tasks = {
 
             let taskName = document.createElement('div')
             taskName.setAttribute('class', 'taskName')
-            taskName.textContent = `${task.id}`
+            taskName.textContent = `${task.name}`
 
             let dueDate = document.createElement('div')
             dueDate.setAttribute('class', 'dueDate')
@@ -130,7 +128,6 @@ const Tasks = {
             })
         counter = 0
         editTaskListeners()
-        orderingTaskListeners()
     },
 
     setTaskAsComplete: function(e) {
@@ -163,7 +160,27 @@ const Tasks = {
         })
         localStorage.setItem('collection', JSON.stringify(collection)); 
         Tasks.renderTasks()  
-    }
+    },
+
+    // renderAllTasks: function() {
+    //     //Making allTasks array
+    //     let collection = JSON.parse(localStorage.getItem('collection'))
+    //     let allTasks = []
+    //     collection.forEach(category => {
+    //         if(category.tasks.length > 1){
+    //             category.tasks.forEach(task => {
+    //                 allTasks.push(task)
+    //             })
+    //         } else {
+    //         allTasks.push(category.tasks)
+    //         }
+
+    //     let counter = 0
+    //     document.querySelectorAll('.tasksDisplay').forEach(e => e.remove());
+    //     document.querySelectorAll('.completedTasksDisplay').forEach(e => e.remove());
+    //     //This needs to be refactored - shared code with renderTasks.
+    //     allTasks.forEach(task => {
+    //     })
 }
 
 export {Tasks}

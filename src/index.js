@@ -48,17 +48,22 @@ const submitTaskListeners = () => {
     const addTaskButton = document.getElementById('addTaskButton')
     const inputTableContainer = document.getElementById('inputTableContainer')
     const inputTable = document.querySelector('.inputTable')
+    const taskFormTitle = document.getElementById('taskTitleForm')
+    
     
     addTaskButton.addEventListener('click', () => {
+        let nameValue = document.getElementById('taskInputField').value
         inputTableContainer.setAttribute('id', 'inputTableContainerActive')
         inputTable.classList.add('inputTableActive')
         inputTable.classList.remove('inputTable')
+        taskFormTitle.innerHTML = `Enter details for ${nameValue}`
     })
 
     submitButton.addEventListener('click', () => {
+        let nameValue = document.getElementById('taskInputField').value
         inputTable.classList.toggle('inputTableActive')
         inputTableContainer.setAttribute('id', 'inputTableContainer')
-        Tasks.addTaskToCategory()
+        Tasks.addTaskToCategory(nameValue)
     })
 
     cancelButton.addEventListener('click', () => {
@@ -89,6 +94,7 @@ const editTaskListeners = () => {
 const orderingTaskListeners = () => {
     const orderTaskByImportanceButton = document.getElementById('importanceButton')
     const orderTaskByDateButton = document.getElementById('dateButton')
+    const renderAllTasksButton = document.getElementById('allTasksButton')
 
     orderTaskByImportanceButton.addEventListener('click', function(){
         Tasks.orderTasksByImportance()
@@ -96,14 +102,19 @@ const orderingTaskListeners = () => {
     orderTaskByDateButton.addEventListener('click', function(){
         Tasks.orderTasksByDate()
     })
+
+    renderAllTasksButton.addEventListener('click', function(){
+        Tasks.renderAllTasks()
+    })
    
 }
 
 Categories.renderCategories()
+orderingTaskListeners()
 submitCategoryListeners()
 submitTaskListeners()
 
-export {editCategoryListeners, editTaskListeners, orderingTaskListeners}
+export {editCategoryListeners, editTaskListeners}
 
 
 
