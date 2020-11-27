@@ -79,6 +79,16 @@ const Tasks = {
         }
     },
 
+    deleteTaskAsEdit: function(e) {
+        console.log('delete')
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let activeCategory = collection.find(element => element.active === true);
+        let index = e.target.dataset.index
+        activeCategory.tasks.splice(index, 1)
+        localStorage.setItem('collection', JSON.stringify(collection));
+        //Tasks.renderTasks()
+    },
+
     renderTasks: function() {
         let collection = JSON.parse(localStorage.getItem('collection'))
         let counter = 0

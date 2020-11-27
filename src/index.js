@@ -131,7 +131,11 @@ const editTaskListeners = () => {
     })
 
     const editSubmitButton = document.getElementById('editSubmitButton')
-    editSubmitButton.addEventListener('click', Tasks.editTask)
+    editSubmitButton.addEventListener('click', (e) =>{
+        Tasks.deleteTaskAsEdit(e)
+        Tasks.editTask()
+        
+    })
 
     let completedTaskButtons = Array.from(document.getElementsByClassName('checkboxComplete'));
     completedTaskButtons.forEach(button => {
