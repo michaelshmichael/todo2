@@ -17,6 +17,7 @@ const Tasks = {
         let activeCategory = collection.find(category => category.active)
         let dueDateValue = document.getElementById('dueDate').value
         let priorityValue
+        //Change this so there is a while loop checking it isn't empty
         if (document.getElementById('highPriority').checked) {
                 priorityValue = 1
             } else if (document.getElementById('mediumPriority').checked) {
@@ -86,7 +87,6 @@ const Tasks = {
         let index = e.target.dataset.index
         activeCategory.tasks.splice(index, 1)
         localStorage.setItem('collection', JSON.stringify(collection));
-        //Tasks.renderTasks()
     },
 
     renderTasks: function() {
@@ -207,7 +207,6 @@ const Tasks = {
     },
 
 }
-
 
 export {Tasks}
   

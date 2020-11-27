@@ -50,12 +50,19 @@ const submitTaskListeners = () => {
     const inputTable = document.querySelector('.inputTable')
     const taskFormTitle = document.getElementById('taskTitleForm')
     let taskInputField = document.getElementById('taskInputField')
+
+    const dueDateForm = document.getElementById('dueDate')
+    const notes = document.getElementById('notes')
+    const highPriority = document.getElementById('highPriority')
+    const mediumPriority = document.getElementById('mediumPriority')
+    const lowPriority = document.getElementById('lowPriority')
+
+    const editInputTableContainer = document.getElementById('editInputTableContainer')
+    const editInputTable = document.querySelector('.editInputTable')
     
     addTaskButton.addEventListener('click', () => {
         let collection = JSON.parse(localStorage.getItem('collection'))
         let nameValue = document.getElementById('taskInputField').value
-
-        // Need to make these fields empty when clicked before entering a new task.
 
         let activeCategory = collection.find(category => category.active);
         if (activeCategory == undefined){
@@ -67,6 +74,9 @@ const submitTaskListeners = () => {
             inputTable.classList.add('inputTableActive')
             inputTable.classList.remove('inputTable')
             taskFormTitle.innerHTML = `Enter details for ${nameValue}`
+            dueDateForm.value = ''
+            notes.value = ''
+
         }
     })
 
@@ -80,10 +90,23 @@ const submitTaskListeners = () => {
         taskInputField.value = ''
     })
 
+    //const editSubmitButton = document.getElementById('editSubmitButton')
+
     cancelButton.addEventListener('click', () => {
         inputTableContainer.setAttribute('id', 'inputTableContainer')
         inputTable.classList.add('inputTable')
         inputTable.classList.remove('inputTableActive')
+    })
+
+    editSubmitButton.addEventListener('click', (e) =>{
+        Tasks.deleteTaskAsEdit(e)
+        Tasks.editTask()
+    })
+
+    editCancelButton.addEventListener('click', () => {
+        editInputTableContainer.setAttribute('id', 'editInputTableContainer')
+        editInputTable.classList.add('editInputTable')
+        editInputTable.classList.remove('editInputTableActive')
     })
 }
 
@@ -119,6 +142,7 @@ const editTaskListeners = () => {
             editInputTable.classList.remove('editInputTable')
             editTaskFormTitle.textContent = `Edit details for ${task.name}`
             editDueDateForm.value = task.dueDate
+            //This needs to be better - gets stuck on High Priority
             if (`${task.priority}` == 1) {
                 editHighPriority.setAttribute('checked', 'x')
             } else if (`${task.priority}` == 2) {
@@ -130,13 +154,6 @@ const editTaskListeners = () => {
         })
     })
 
-    const editSubmitButton = document.getElementById('editSubmitButton')
-    editSubmitButton.addEventListener('click', (e) =>{
-        Tasks.deleteTaskAsEdit(e)
-        Tasks.editTask()
-        
-    })
-
     let completedTaskButtons = Array.from(document.getElementsByClassName('checkboxComplete'));
     completedTaskButtons.forEach(button => {
         button.addEventListener('click', function(e){
@@ -144,7 +161,6 @@ const editTaskListeners = () => {
         })
     })
 }
-
 
 const orderingTaskListeners = () => {
     const orderTaskByImportanceButton = document.getElementById('importanceButton')
@@ -154,6 +170,7 @@ const orderingTaskListeners = () => {
     orderTaskByImportanceButton.addEventListener('click', function(){
         Tasks.orderTasksByImportance()
     })
+
     orderTaskByDateButton.addEventListener('click', function(){
         Tasks.orderTasksByDate()
     })
