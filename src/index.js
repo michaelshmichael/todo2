@@ -49,13 +49,13 @@ const submitTaskListeners = () => {
     const inputTableContainer = document.getElementById('inputTableContainer')
     const inputTable = document.querySelector('.inputTable')
     const taskFormTitle = document.getElementById('taskTitleForm')
-    let taskInputField = document.getElementById('taskInputField')
+    const taskInputField = document.getElementById('taskInputField')
 
     const dueDateForm = document.getElementById('dueDate')
     const notes = document.getElementById('notes')
-    const highPriority = document.getElementById('highPriority')
-    const mediumPriority = document.getElementById('mediumPriority')
-    const lowPriority = document.getElementById('lowPriority')
+    // const highPriority = document.getElementById('highPriority')
+    // const mediumPriority = document.getElementById('mediumPriority')
+    // const lowPriority = document.getElementById('lowPriority')
 
     const editInputTableContainer = document.getElementById('editInputTableContainer')
     const editInputTable = document.querySelector('.editInputTable')
@@ -76,7 +76,7 @@ const submitTaskListeners = () => {
             taskFormTitle.innerHTML = `Enter details for ${nameValue}`
             dueDateForm.value = ''
             notes.value = ''
-
+            //Need to set priority at null
         }
     })
 
@@ -85,12 +85,9 @@ const submitTaskListeners = () => {
         inputTable.classList.remove('inputTableActive')
         inputTable.classList.add('inputTable')
         inputTableContainer.setAttribute('id', 'inputTableContainer')
-
         Tasks.addTaskToCategory(nameValue)
         taskInputField.value = ''
     })
-
-    //const editSubmitButton = document.getElementById('editSubmitButton')
 
     cancelButton.addEventListener('click', () => {
         inputTableContainer.setAttribute('id', 'inputTableContainer')
@@ -99,7 +96,6 @@ const submitTaskListeners = () => {
     })
 
     editSubmitButton.addEventListener('click', () =>{
-        //Tasks.deleteTaskAsEdit()
         Tasks.editTask()
     })
 
@@ -127,7 +123,6 @@ const editTaskListeners = () => {
     const editHighPriority = document.getElementById('editHighPriority')
     const editMediumPriority = document.getElementById('editMediumPriority')
     const editLowPriority = document.getElementById('editLowPriority')
-    
     
     let editTaskButtons = Array.from(document.getElementsByClassName('editTaskIcon'))
 
