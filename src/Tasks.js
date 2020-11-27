@@ -34,6 +34,40 @@ const Tasks = {
         Tasks.renderTasks()
     },
 
+    editTask: function(){
+        let editInputTable = document.querySelector('.editInputTableActive')
+        let editInputTableContainer = document.getElementById('editInputTableContainerActive')
+        let editTaskFormTitle = document.getElementById('editTaskTitleForm')
+        editInputTable.classList.remove('editInputTableActive')
+        editInputTable.classList.add('editInputTable')
+        editInputTableContainer.setAttribute('id', 'editInputTableContainer')
+        
+
+        let nameValueInit = editTaskFormTitle.textContent
+        let nameArray = nameValueInit.split('')
+        nameArray.splice(0, 17)
+        let nameValue = nameArray.join('')
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let activeCategory = collection.find(category => category.active)
+        let dueDateValue = document.getElementById('editDueDate').value
+        let priorityValue
+        if (document.getElementById('editHighPriority').checked) {
+                priorityValue = 1
+            } else if (document.getElementById('editMediumPriority').checked) {
+                priorityValue = 2
+            } else if (document.getElementById('editLowPriority').checked){
+                priorityValue = 3
+            } else {
+                alert('Please Select a Priority Level')
+        }
+        let notesValue = document.getElementById('editNotes').value
+        let newTask = new Tasks.taskConstructor (nameValue, dueDateValue, priorityValue, notesValue)
+        activeCategory.tasks.push(newTask)
+        
+        localStorage.setItem('collection', JSON.stringify(collection));
+        Tasks.renderTasks()
+    },
+
     deleteTask: function(e) {
     let collection = JSON.parse(localStorage.getItem('collection'))
     let activeCategory = collection.find(element => element.active === true);
@@ -162,26 +196,8 @@ const Tasks = {
         Tasks.renderTasks()  
     },
 
-    // renderAllTasks: function() {
-    //     //Making allTasks array
-    //     let collection = JSON.parse(localStorage.getItem('collection'))
-    //     let allTasks = []
-    //     collection.forEach(category => {
-    //         if(category.tasks.length > 1){
-    //             category.tasks.forEach(task => {
-    //                 allTasks.push(task)
-    //             })
-    //         } else {
-    //         allTasks.push(category.tasks)
-    //         }
-
-    //     let counter = 0
-    //     document.querySelectorAll('.tasksDisplay').forEach(e => e.remove());
-    //     document.querySelectorAll('.completedTasksDisplay').forEach(e => e.remove());
-    //     //This needs to be refactored - shared code with renderTasks.
-    //     allTasks.forEach(task => {
-    //     })
 }
+
 
 export {Tasks}
   

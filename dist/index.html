@@ -78,6 +78,39 @@
           </div>
     </div>
   </div>
+
+  <div id="editInputTableContainer">
+    <div class="editInputTable">
+      <h1 id="editTaskTitleForm"></h1>
+        <div id="editMainFormInfo">
+        <div id="editDueDateContainer">
+        <label>Due Date</label>
+          <input type = "date" name = "title" id = "editDueDate">
+        </div>
+        <div id="editPriority">
+        <label>Priority</label>
+        <div id="editPrioritySelectorsContainer">
+          <legend>
+        <label for="high">High</label>
+          <input type = "radio" name = "priority" id = "editHighPriority" class='prioritySelectors'>
+        <label for="medium">Medium</label>
+          <input type = "radio" name = "priority" id = "editMediumPriority" class='prioritySelectors'>
+        <label for="low">Low</label>
+          <input type = "radio" name = "priority" id = "editLowPriority" class='prioritySelectors'>
+          </legend>
+        </div>
+        </div>
+        <div id="editNotesContainer">
+        <label>Notes</label>
+          <textarea id= "editNotes" name="textarea" style="width:150px;height:50px;"></textarea>
+        </div>
+      </div>
+          <div id="editFormButtons">
+            <button id="editSubmitButton" class="ui green button" on-click="Tasks.editTask()">Confirm</button>
+            <button id="editCancelButton" class="ui orange button">Cancel</button>
+          </div>
+    </div>
+  </div>
   <script src="main.js"></script>
   </body>
 </html>

@@ -402,3 +402,99 @@ body {
     font-family: 'Poppins', sans-serif;
     resize: none;
 }
+
+
+/* EDIT TASK FORM */
+
+#editInputTableContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 400px;
+    top: 100px;
+    left: 240px;
+    z-index: -1;
+}
+
+#editInputTableContainerActive {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 300px;
+    top: 100px;
+    left: 240px;
+}
+
+.editInputTable {
+    display: none;
+}
+
+.editInputTableActive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 800px;
+    left: auto;
+    right: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    background-color:#6c1aaf;
+    border: 10px solid rgb(71, 1, 99);
+    padding: 14px;
+    animation: fadeIn 0.4s linear 1 forwards;
+    z-index: +1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.1)}
+    100% { opacity: 1; transform: scale(1)}
+}
+
+#editTaskTitleForm {
+    height: 50px;
+}
+
+#editDueDateContainer {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#editPriority {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#editPrioritySelectorsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#editFormButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+#editMainFormInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#editNotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+}
