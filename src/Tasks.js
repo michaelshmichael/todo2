@@ -43,13 +43,14 @@ const Tasks = {
         editInputTable.classList.add('editInputTable')
         editInputTableContainer.setAttribute('id', 'editInputTableContainer')
         
+        let collection = JSON.parse(localStorage.getItem('collection'))
+        let activeCategory = collection.find(category => category.active)
 
         let nameValueInit = editTaskFormTitle.textContent
         let nameArray = nameValueInit.split('')
         nameArray.splice(0, 17)
         let nameValue = nameArray.join('')
-        let collection = JSON.parse(localStorage.getItem('collection'))
-        let activeCategory = collection.find(category => category.active)
+
         let dueDateValue = document.getElementById('editDueDate').value
         let priorityValue
         if (document.getElementById('editHighPriority').checked) {
@@ -61,10 +62,10 @@ const Tasks = {
             } else {
                 alert('Please Select a Priority Level')
         }
+
         let notesValue = document.getElementById('editNotes').value
         let newTask = new Tasks.taskConstructor (nameValue, dueDateValue, priorityValue, notesValue)
         activeCategory.tasks.push(newTask)
-        
         localStorage.setItem('collection', JSON.stringify(collection));
         Tasks.renderTasks()
     },
@@ -80,12 +81,10 @@ const Tasks = {
         }
     },
 
-    deleteTaskAsEdit: function(e) {
-        console.log('delete')
+    deleteTaskAsEdit: function(editIndex) {
         let collection = JSON.parse(localStorage.getItem('collection'))
         let activeCategory = collection.find(element => element.active === true);
-        let index = e.target.dataset.index
-        activeCategory.tasks.splice(index, 1)
+        activeCategory.tasks.splice(editIndex, 1)
         localStorage.setItem('collection', JSON.stringify(collection));
     },
 

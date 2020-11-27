@@ -98,8 +98,8 @@ const submitTaskListeners = () => {
         inputTable.classList.remove('inputTableActive')
     })
 
-    editSubmitButton.addEventListener('click', (e) =>{
-        Tasks.deleteTaskAsEdit(e)
+    editSubmitButton.addEventListener('click', () =>{
+        //Tasks.deleteTaskAsEdit()
         Tasks.editTask()
     })
 
@@ -133,16 +133,16 @@ const editTaskListeners = () => {
 
     editTaskButtons.forEach(button => {
         button.addEventListener('click', (e) =>{
-            let index = e.target.dataset.index
+            let editIndex = e.target.dataset.index
             let collection = JSON.parse(localStorage.getItem('collection'))
             let activeCategory = collection.find(category => category.active);
-            let task = activeCategory.tasks[index]
+            let task = activeCategory.tasks[editIndex]
             editInputTableContainer.setAttribute('id', 'editInputTableContainerActive')
             editInputTable.classList.add('editInputTableActive')
             editInputTable.classList.remove('editInputTable')
             editTaskFormTitle.textContent = `Edit details for ${task.name}`
             editDueDateForm.value = task.dueDate
-            //This needs to be better - gets stuck on High Priority
+            //This needs to be better - gets stuck on High
             if (`${task.priority}` == 1) {
                 editHighPriority.setAttribute('checked', 'x')
             } else if (`${task.priority}` == 2) {
@@ -151,6 +151,7 @@ const editTaskListeners = () => {
                 editLowPriority.setAttribute('checked', 'x')
             }
             editNotes.textContent = task.notes
+            Tasks.deleteTaskAsEdit(editIndex)
         })
     })
 
