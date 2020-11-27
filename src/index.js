@@ -57,8 +57,8 @@ const submitTaskListeners = () => {
     // const mediumPriority = document.getElementById('mediumPriority')
     // const lowPriority = document.getElementById('lowPriority')
 
-    const editInputTableContainer = document.getElementById('editInputTableContainer')
-    const editInputTable = document.querySelector('.editInputTable')
+    // const editInputTableContainer = document.getElementById('editInputTableContainer')
+    // const editInputTable = document.querySelector('.editInputTable')
     
     addTaskButton.addEventListener('click', () => {
         let collection = JSON.parse(localStorage.getItem('collection'))
@@ -99,11 +99,11 @@ const submitTaskListeners = () => {
         Tasks.editTask()
     })
 
-    editCancelButton.addEventListener('click', () => {
-        editInputTableContainer.setAttribute('id', 'editInputTableContainer')
-        editInputTable.classList.add('editInputTable')
-        editInputTable.classList.remove('editInputTableActive')
-    })
+    // editCancelButton.addEventListener('click', () => {
+    //     editInputTableContainer.setAttribute('id', 'editInputTableContainer')
+    //     editInputTable.classList.add('editInputTable')
+    //     editInputTable.classList.remove('editInputTableActive')
+    // })
 }
 
 const editTaskListeners = () => {
@@ -145,7 +145,7 @@ const editTaskListeners = () => {
             } else {
                 editLowPriority.setAttribute('checked', 'x')
             }
-            editNotes.textContent = task.notes
+            editNotes.value = task.notes
             Tasks.deleteTaskAsEdit(editIndex)
         })
     })
